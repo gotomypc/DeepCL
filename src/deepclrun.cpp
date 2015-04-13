@@ -43,6 +43,7 @@ using namespace std;
         ('annealLearningRate', 'float', 'multiply learning rate by this, each epoch',1),
         ('loadWeights', 'int', 'load weights from file at startup?', 0),
         ('weightsFile', 'string', 'file to write weights to','weights.dat'),
+        ('writeWeightsInterval', 'int', 'write weights every this many minutes', 0 ),
         ('normalization', 'string', '[stddev|maxmin]', 'stddev'),
         ('normalizationNumStds', 'float', 'with stddev normalization, how many stddevs from mean is 1?', 2.0),
         ('dumpTimings', 'int', 'dump detailed timings each epoch? [1|0]', 0),
@@ -75,6 +76,7 @@ public:
     float annealLearningRate;
     int loadWeights;
     string weightsFile;
+    int writeWeightsInterval;
     string normalization;
     float normalizationNumStds;
     int dumpTimings;
@@ -88,13 +90,6 @@ public:
         /* [[[cog
             cog.outl('// generated using cog:')
             for (name,type,description,default) in options:
-                # initializer = ''
-                # if type == 'string':
-                #     initializer = '""'
-                # elif type == 'int':
-                #     initializer = '0'
-                # else:
-                #     initializer = '0.0f'
                 defaultString = ''
                 if type == 'string':
                     defaultString = '"' + default + '"'
@@ -121,6 +116,7 @@ public:
         annealLearningRate = 1.0f;
         loadWeights = 0;
         weightsFile = "weights.dat";
+        writeWeightsInterval = 0;
         normalization = "stddev";
         normalizationNumStds = 2.0f;
         dumpTimings = 0;
@@ -147,6 +143,24 @@ public:
     }
     virtual void run( int epoch ) {
         WeightsPersister::persistWeights( config->weightsFile, config->getTrainingString(), net, epoch + 1, 0, 0, 0, 0 );
+    }
+};
+
+class IntervalWeightsWriter : public NetLearner_PostBatchAction {
+public:
+    NeuralNet *net;
+    Config *config;
+    int intervalMinutes;
+    double lastTime;
+    IntervalWeightsWriter( NeuralNet *net, Config *config, int intervalMinutes ) :
+            net( net ),
+            config( config ),
+            intervalMinutes( intervalMinutes ) {
+        lastTime = 0;
+    }
+    virtual void run( int epoch, int batch, float loss, int numRight ) {
+        cout << "intervalweightswriter" << endl;
+        //WeightsPersister::persistWeights( config->weightsFile, config->getTrainingString(), net, epoch + 1, 0, 0, 0, 0 );
     }
 };
 
@@ -288,6 +302,10 @@ void go(Config config) {
         if( config.weightsFile != "" ) {
             netLearner.addPostEpochAction( &weightsWriter );
         }
+//        IntervalWeightsWriter intervalWeightsWriter( net, &config, config.writeWeightsInterval );
+//        if( config.writeWeightsInterval > 0 ) {
+//            netLearner.addPostBatchAction( &intervalWeightsWriter );
+//        }
         netLearner.learn( config.learningRate, config.annealLearningRate );
     } else {
         NetLearner<unsigned char> netLearner( trainable );
@@ -299,6 +317,10 @@ void go(Config config) {
         WeightsWriter weightsWriter( net, &config );
         if( config.weightsFile != "" ) {
             netLearner.addPostEpochAction( &weightsWriter );
+        }
+        IntervalWeightsWriter intervalWeightsWriter( net, &config, config.writeWeightsInterval );
+        if( config.writeWeightsInterval > 0 ) {
+            netLearner.addPostBatchAction( &intervalWeightsWriter );
         }
         netLearner.learn( config.learningRate, config.annealLearningRate );
     }
@@ -345,6 +367,7 @@ void printUsage( char *argv[], Config config ) {
     cout << "    anneallearningrate=[multiply learning rate by this, each epoch] (" << config.annealLearningRate << ")" << endl;
     cout << "    loadweights=[load weights from file at startup?] (" << config.loadWeights << ")" << endl;
     cout << "    weightsfile=[file to write weights to] (" << config.weightsFile << ")" << endl;
+    cout << "    writeweightsinterval=[write weights every this many minutes] (" << config.writeWeightsInterval << ")" << endl;
     cout << "    normalization=[[stddev|maxmin]] (" << config.normalization << ")" << endl;
     cout << "    normalizationnumstds=[with stddev normalization, how many stddevs from mean is 1?] (" << config.normalizationNumStds << ")" << endl;
     cout << "    dumptimings=[dump detailed timings each epoch? [1|0]] (" << config.dumpTimings << ")" << endl;
@@ -409,6 +432,8 @@ int main( int argc, char *argv[] ) {
                 config.loadWeights = atoi(value);
             } else if( key == "weightsfile" ) {
                 config.weightsFile = (value);
+            } else if( key == "writeweightsinterval" ) {
+                config.writeWeightsInterval = atoi(value);
             } else if( key == "normalization" ) {
                 config.normalization = (value);
             } else if( key == "normalizationnumstds" ) {

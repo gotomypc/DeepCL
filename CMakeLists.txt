@@ -59,6 +59,7 @@ set( DeepCL_sources LayerMaker.cpp NeuralNetMould.cpp
     PropagateExperimental.cpp PropagateAuto.cpp PropagateCpu.cpp Propagate3_unfactorized.cpp
     PoolingBackpropGpuNaive.cpp ../qlearning/QLearner.cpp ../qlearning/array_helper.cpp
     ForceBackpropLayerMaker.cpp ForceBackpropLayer.cpp MnistLoader.cpp
+    BatchLearner2.cpp
  )
 foreach(source ${DeepCL_sources})
     set( DeepCL_sources_prefixed ${DeepCL_sources_prefixed} src/${source})
@@ -140,7 +141,7 @@ set( UNITTEST_SOURCES test/testbackpropweights.cpp test/testpropagate.cpp test/t
  src/stringhelper.cpp test/DimFromArgs.cpp test/testMemset.cpp test/WeightRandomizer.cpp
  test/testCopyBuffer.cpp test/CopyBuffer.cpp test/PrintBuffer.cpp test/testCopyBlock.cpp
  test/SpeedTemplates.cpp test/testSpeedTemplates.cpp test/testCopyLocal.cpp
- test/testNetdefToNet.cpp
+ test/testNetdefToNet.cpp test/testBatchLearner2.cpp
  )
 #
 #

@@ -20,6 +20,10 @@ class DeepCL_EXPORT PostEpochAction {
 public:
     virtual void run( int epoch ) = 0;
 };
+class DeepCL_EXPORT NetLearner_PostBatchAction {
+public:
+    virtual void run( int epoch, int batch, float lossSoFar, int numRightSoFar ) = 0;
+};
 
 // handles learning the neural net, ie running multiple epochs,
 // using a BatchLearner, to learn each epoch
@@ -45,6 +49,7 @@ public:
     int startEpoch;
     int numEpochs;
 
+    std::vector<NetLearner_PostBatchAction *> postBatchActions; // note: we DONT own these, dont delete, caller owns
     std::vector<PostEpochAction *> postEpochActions; // note: we DONT own these, dont delete, caller owns
 
     // [[[cog
@@ -61,6 +66,7 @@ public:
     void setBatchSize( int batchSize );
     VIRTUAL ~NetLearner();
     VIRTUAL void addPostEpochAction( PostEpochAction *action );
+    VIRTUAL void addPostBatchAction( NetLearner_PostBatchAction *action );
     void learn( float learningRate );
     void learn( float learningRate, float annealLearningRate );
 
