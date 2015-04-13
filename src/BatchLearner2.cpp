@@ -19,60 +19,33 @@ using namespace std;
 #define VIRTUAL
 
 template< typename T >
-BatchLearner2<T>::BatchLearner2( NeuralNet *net, int N, int batchSize, T *data, int const *labels ) :
+BatchLearner2<T>::BatchLearner2( int N, int batchSize, NeuralNet *net, float learningRate,
+        T *data, int const *labels
+     ) :
+        Batcher2<T>( N, batchSize ),
         net( net ),
-        N( N ),
-        batchSize( batchSize ),
+        learningRate( learningRate ),
         data( data ),
         labels( labels ),
-        numBatches( ( N + batchSize  - 1 ) / batchSize ),
         inputCubeSize( net->getInputCubeSize() ) {
-    nextBatch = 0;
     numRight = 0;
     loss = 0;
-    epochDone = false;
 }
 
 // do one batch, update variables
 // returns true if not finished, otherwise false
 template< typename T >
-bool BatchLearner2<T>::tick( float learningRate ) {
-    if( epochDone ) {
-        epochDone = false;
-    }
-    int batch = nextBatch;
-    int batchStart = batch * batchSize;
-    int thisBatchSize = batchSize;
-    if( batch == numBatches - 1 ) {
-        thisBatchSize = N - batchStart;
-    }
-//    cout << "numbatches " << numBatches << endl;
+void BatchLearner2<T>::_tick(int batchStart, int thisBatchSize) {
     net->setBatchSize( thisBatchSize );
     net->learnBatchFromLabels( learningRate, &(data[ batchStart * inputCubeSize ]), &(labels[batchStart]) );
     loss += net->calcLossFromLabels( &(labels[batchStart]) );
     numRight += net->calcNumRight( &(labels[batchStart]) );
-
-    nextBatch++;
-    if( nextBatch == numBatches ) {
-        epochDone = true;
-//        nextBatch = 0;
-    }
-    return !epochDone;
-}
+ }
 
 template< typename T >
-void BatchLearner2<T>::reset() {
-    epochDone = false;
-    nextBatch = 0;
+void BatchLearner2<T>::_reset() {
     loss = 0;
     numRight = 0;
-}
-
-template< typename T >
-void BatchLearner2<T>::runEpoch( float learningRate ) {
-    while( !epochDone ) {
-        tick( learningRate );
-    }
 }
 
 template class BatchLearner2<unsigned char>;

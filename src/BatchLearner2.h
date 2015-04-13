@@ -7,6 +7,8 @@
 class NeuralNet;
 class Trainable;
 
+#include "Batcher2.h"
+
 #define VIRTUAL virtual
 #define STATIC static
 
@@ -14,32 +16,29 @@ class Trainable;
 
 // callback free. that's the plan (since makes easier to wrap for lua et al)
 template< typename T >
-class DeepCL_EXPORT BatchLearner2 {
+class DeepCL_EXPORT BatchLearner2 : public Batcher2<T> {
 public:
     NeuralNet *net;
-    const int N;
-    const int batchSize;
+    const float learningRate;
     T const*data;
     int const *labels;
 
-    const int numBatches;
     const int inputCubeSize;
 //    const int outputCubeSize;
 
-    int nextBatch;
     int numRight;
     float loss;
-    bool epochDone;
 
     // [[[cog
     // import cog_addheaders
     // cog_addheaders.add_templated()
     // ]]]
     // generated, using cog:
-    BatchLearner2( NeuralNet *net, int N, int batchSize, T *data, int const *labels );
-    bool tick( float learningRate );
-    void reset();
-    void runEpoch( float learningRate );
+    BatchLearner2( int N, int batchSize, NeuralNet *net, float learningRate,
+    T *data, int const *labels
+    );
+    void _tick(int batchStart, int thisBatchSize);
+    void _reset();
 
     // [[[end]]]
 };

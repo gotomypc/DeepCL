@@ -54,12 +54,12 @@ TEST( testBatchLearner2, basic ) {
     NetdefToNet::createNetFromNetdef( net, "RT2-8C5{z}-MP2-16C5{z}-MP3-150N-10N" );
     net->print();
 
-    BatchLearner2<unsigned char> batchLearner( net, Ntrain, batchSize, trainData, trainLabels );
+    BatchLearner2<unsigned char> batchLearner( Ntrain, batchSize, net, learningRate, trainData, trainLabels );
     int totalBatches = 0;
     for( int epoch = 0; epoch < 3; epoch++ ) {
         batchLearner.reset();
         while( !batchLearner.epochDone ) {
-            batchLearner.tick( learningRate );
+            batchLearner.tick();
             cout << "epoch=" << epoch << " batch=" << ( batchLearner.nextBatch - 1 ) << " numRight=" << batchLearner.numRight <<
                 " loss=" << batchLearner.loss << endl;
             totalBatches++;
