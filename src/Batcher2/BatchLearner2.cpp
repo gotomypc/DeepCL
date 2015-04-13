@@ -22,11 +22,8 @@ template< typename T >
 BatchLearner2<T>::BatchLearner2( int N, int batchSize, NeuralNet *net, float learningRate,
         T *data, int const *labels
      ) :
-        Batcher2( N, batchSize ),
-        net( net ),
+        Batcher2( net, N, batchSize, data, labels ),
         learningRate( learningRate ),
-        data( data ),
-        labels( labels ),
         inputCubeSize( net->getInputCubeSize() ) {
     numRight = 0;
     loss = 0;

@@ -13,10 +13,14 @@ class Trainable;
 #include "DeepCLDllExport.h"
 
 // callback free. that's the plan (since makes easier to wrap for lua et al)
+template< typename T >
 class DeepCL_EXPORT Batcher2 {
 public:
+    NeuralNet *net;
     const int N;
     const int batchSize;
+    T *data;
+    int const*labels;
 
     const int numBatches;
 
@@ -28,7 +32,7 @@ public:
 
     // [[[cog
     // import cog_addheaders
-    // cog_addheaders.add()
+    // cog_addheaders.add_templated()
     // ]]]
     // generated, using cog:
     Batcher2( int N, int batchSize );

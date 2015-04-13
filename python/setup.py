@@ -43,7 +43,7 @@ for arg in sys.argv:
 if docopy:
     if not os.path.isdir('mysrc'):
         os.makedirs('mysrc')
-    for thisdir in ['../src','../OpenCLHelper','../qlearning',
+    for thisdir in ['../src','../src/Batcher2','../OpenCLHelper','../qlearning',
             '../OpenCLHelper/thirdparty/clew/src']: # copy everything..
         for thisfile in os.listdir(thisdir):
             #print(thisfile)

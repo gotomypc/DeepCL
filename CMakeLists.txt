@@ -27,6 +27,7 @@ OPTION(PROTOTYPING "Only for devs." OFF)
 
 include_directories( . )
 include_directories( src )
+include_directories( src/Batcher2 )
 include_directories( qlearning )
 include_directories( OpenCLHelper )
 include_directories( OpenCLHelper/clew/include )
@@ -59,7 +60,7 @@ set( DeepCL_sources LayerMaker.cpp NeuralNetMould.cpp
     PropagateExperimental.cpp PropagateAuto.cpp PropagateCpu.cpp Propagate3_unfactorized.cpp
     PoolingBackpropGpuNaive.cpp ../qlearning/QLearner.cpp ../qlearning/array_helper.cpp
     ForceBackpropLayerMaker.cpp ForceBackpropLayer.cpp MnistLoader.cpp
-    BatchLearner2.cpp Batcher2.cpp BatchPropagator2.cpp
+    Batcher2/BatchLearner2.cpp Batcher2/Batcher2.cpp Batcher2/BatchPropagator2.cpp
  )
 foreach(source ${DeepCL_sources})
     set( DeepCL_sources_prefixed ${DeepCL_sources_prefixed} src/${source})

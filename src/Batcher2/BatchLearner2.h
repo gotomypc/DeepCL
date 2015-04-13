@@ -18,10 +18,7 @@ class Trainable;
 template< typename T >
 class DeepCL_EXPORT BatchLearner2 : public Batcher2 {
 public:
-    NeuralNet *net;
     const float learningRate;
-    T const*data;
-    int const *labels;
 
     const int inputCubeSize;
 //    const int outputCubeSize;
