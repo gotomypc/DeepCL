@@ -9,7 +9,7 @@
 #include "AccuracyHelper.h"
 #include "Trainable.h"
 
-#include "BatchLearner2.h"
+#include "BatchBackPropFromLabels2.h"
 
 using namespace std;
 
@@ -19,13 +19,12 @@ using namespace std;
 #define VIRTUAL
 
 template< typename T >
-BatchLearner2<T>::BatchLearner2( int N, int batchSize, NeuralNet *net, float learningRate,
-        T *data, int const *labels
+BatchBackPropFromLabels2<T>::BatchBackPropFromLabels2( int N, int batchSize, NeuralNet *net, float learningRate,
+        int const *labels
      ) :
         Batcher2( N, batchSize ),
         net( net ),
         learningRate( learningRate ),
-        data( data ),
         labels( labels ),
         inputCubeSize( net->getInputCubeSize() ) {
     numRight = 0;
@@ -35,19 +34,19 @@ BatchLearner2<T>::BatchLearner2( int N, int batchSize, NeuralNet *net, float lea
 // do one batch, update variables
 // returns true if not finished, otherwise false
 template< typename T >
-void BatchLearner2<T>::_tick(int batchStart, int thisBatchSize) {
+void BatchBackPropFromLabels2<T>::_tick(int batchStart, int thisBatchSize) {
     net->setBatchSize( thisBatchSize );
-    net->learnBatchFromLabels( learningRate, &(data[ batchStart * inputCubeSize ]), &(labels[batchStart]) );
+    net->backPropFromLabels( learningRate, &(labels[batchStart]) );
     loss += net->calcLossFromLabels( &(labels[batchStart]) );
     numRight += net->calcNumRight( &(labels[batchStart]) );
  }
 
 template< typename T >
-void BatchLearner2<T>::_reset() {
+void BatchBackPropFromLabels2<T>::_reset() {
     loss = 0;
     numRight = 0;
 }
 
-template class BatchLearner2<unsigned char>;
-template class BatchLearner2<float>;
+template class BatchBackPropFromLabels2<unsigned char>;
+template class BatchBackPropFromLabels2<float>;
 

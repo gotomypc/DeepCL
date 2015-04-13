@@ -25,8 +25,9 @@ public:
     // ]]]
     // generated, using cog:
     STATIC void getDimensions( std::string trainFilepath, int *p_numExamples, int *p_numPlanes, int *p_imageSize );
-    STATIC void load( std::string trainFilepath, unsigned char *images, int *labels );
-    STATIC void load( std::string trainFilepath, unsigned char *images, int *labels, int startN, int numExamples );
+    STATIC void load( std::string imagesFilepath, unsigned char *images, int *labels );
+    STATIC void load( std::string imagesFilepath, unsigned char *images, int startN, int numExamples );
+    STATIC void load( std::string imagesFilepath, unsigned char *images, int *labels, int startN, int numExamples );
 
     // [[[end]]]
 };

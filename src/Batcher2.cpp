@@ -18,8 +18,7 @@ using namespace std;
 #define STATIC
 #define VIRTUAL
 
-template< typename T >
-Batcher2<T>::Batcher2( int N, int batchSize ) :
+Batcher2::Batcher2( int N, int batchSize ) :
         N( N ),
         batchSize( batchSize ),
         numBatches( ( N + batchSize  - 1 ) / batchSize ) {
@@ -29,8 +28,7 @@ Batcher2<T>::Batcher2( int N, int batchSize ) :
 
 // do one batch, update variables
 // returns true if not finished, otherwise false
-template< typename T >
-bool Batcher2<T>::tick() {
+bool Batcher2::tick() {
     if( epochDone ) {
         epochDone = false;
     }
@@ -50,20 +48,16 @@ bool Batcher2<T>::tick() {
     return !epochDone;
 }
 
-template< typename T >
-void Batcher2<T>::reset() {
+void Batcher2::reset() {
     epochDone = false;
     nextBatch = 0;
     this->_reset();
 }
 
-template< typename T >
-void Batcher2<T>::runEpoch( float learningRate ) {
+void Batcher2::runEpoch( float learningRate ) {
     while( !epochDone ) {
         tick();
     }
 }
 
-template class Batcher2<unsigned char>;
-template class Batcher2<float>;
 

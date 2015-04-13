@@ -16,15 +16,13 @@ class Trainable;
 
 // callback free. that's the plan (since makes easier to wrap for lua et al)
 template< typename T >
-class DeepCL_EXPORT BatchLearner2 : public Batcher2 {
+class DeepCL_EXPORT BatchBackPropFromLabels2 : public Batcher2 {
 public:
     NeuralNet *net;
     const float learningRate;
-    T const*data;
     int const *labels;
 
     const int inputCubeSize;
-//    const int outputCubeSize;
 
     int numRight;
     float loss;
@@ -34,8 +32,8 @@ public:
     // cog_addheaders.add_templated()
     // ]]]
     // generated, using cog:
-    BatchLearner2( int N, int batchSize, NeuralNet *net, float learningRate,
-    T *data, int const *labels
+    BatchBackPropFromLabels2( int N, int batchSize, NeuralNet *net, float learningRate,
+    int const *labels
     );
     void _tick(int batchStart, int thisBatchSize);
     void _reset();

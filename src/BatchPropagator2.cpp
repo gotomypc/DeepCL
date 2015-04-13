@@ -9,7 +9,7 @@
 #include "AccuracyHelper.h"
 #include "Trainable.h"
 
-#include "BatchLearner2.h"
+#include "BatchPropagator2.h"
 
 using namespace std;
 
@@ -19,35 +19,27 @@ using namespace std;
 #define VIRTUAL
 
 template< typename T >
-BatchLearner2<T>::BatchLearner2( int N, int batchSize, NeuralNet *net, float learningRate,
-        T *data, int const *labels
+BatchPropagator2<T>::BatchPropagator2( int N, int batchSize, NeuralNet *net,
+        T *data
      ) :
         Batcher2( N, batchSize ),
         net( net ),
-        learningRate( learningRate ),
         data( data ),
-        labels( labels ),
         inputCubeSize( net->getInputCubeSize() ) {
-    numRight = 0;
-    loss = 0;
 }
 
 // do one batch, update variables
 // returns true if not finished, otherwise false
 template< typename T >
-void BatchLearner2<T>::_tick(int batchStart, int thisBatchSize) {
+void BatchPropagator2<T>::_tick(int batchStart, int thisBatchSize) {
     net->setBatchSize( thisBatchSize );
-    net->learnBatchFromLabels( learningRate, &(data[ batchStart * inputCubeSize ]), &(labels[batchStart]) );
-    loss += net->calcLossFromLabels( &(labels[batchStart]) );
-    numRight += net->calcNumRight( &(labels[batchStart]) );
+    net->propagate( &(data[ batchStart * inputCubeSize ]) );
  }
 
 template< typename T >
-void BatchLearner2<T>::_reset() {
-    loss = 0;
-    numRight = 0;
+void BatchPropagator2<T>::_reset() {
 }
 
-template class BatchLearner2<unsigned char>;
-template class BatchLearner2<float>;
+template class BatchPropagator2<unsigned char>;
+template class BatchPropagator2<float>;
 

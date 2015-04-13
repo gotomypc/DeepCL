@@ -53,19 +53,11 @@ STATIC void NorbLoader::load( std::string trainFilepath, unsigned char *images, 
 
 STATIC void NorbLoader::load( std::string trainFilepath, unsigned char *images, int *labels, int startN, int numExamples ) {
     int N, numPlanes, imageSize;
-    // I know, this could be optimized a bit, to remove the intermediate arrays...
     loadImages( images, trainFilepath, &N, &numPlanes, &imageSize, startN, numExamples );
-//    int totalLinearSize = numExamples  * numPlanes * imageSize * imageSize;
-//    memcpy( images, loadedImages + startN * numPlanes * imageSize * imageSize, numExamples * numPlanes * imageSize * imageSize * sizeof( unsigned char ) );
-    loadLabels( labels, replace( trainFilepath, "-dat.mat","-cat.mat"), startN, numExamples );
-//    memcpy( labels, loadedLabels + startN, sizeof( int ) * numExamples );
-//    delete []loadedImages;
-//    delete[] loadedLabels;
+    if( labels != 0 ) {
+        loadLabels( labels, replace( trainFilepath, "-dat.mat","-cat.mat"), startN, numExamples );
+    }
 }
-
-//STATIC unsigned char *NorbLoader::loadImages( std::string filepath, int *p_N, int *p_numPlanes, int *p_imageSize ) {
-//    return loadImages( filepath, p_N, p_numPlanes, p_imageSize, 0, 0 );
-//}
 
 STATIC int *NorbLoader::loadLabels( std::string labelsfilepath, int numExamples ) {
     int *labels = new int[numExamples];

@@ -46,20 +46,22 @@ STATIC void MnistLoader::load( std::string imagesFilePath, unsigned char *images
     char *imagesAsCharArray = reinterpret_cast< char *>(images );
     FileHelper::readBinaryChunk( imagesAsCharArray, imagesFilePath, fileStartPos, fileReadLength );
 
-    // now do labels...
-    string labelsFilePath = replace( imagesFilePath, "-images-idx3-ubyte", "-labels-idx1-ubyte" );
-    cout << "labelsfilepath: " << labelsFilePath << endl;
-    
-    fileStartPos = 2 * 4 + (long)startN;
-    fileReadLength = (long)numExamples;
-    char *labelsAsCharArray = new char[fileReadLength];
-    unsigned char *labelsAsUCharArray = reinterpret_cast< unsigned char *>(labelsAsCharArray );
-    cout << "labels path " << labelsFilePath << " startpos " << fileStartPos << " read length " << fileReadLength << endl;
-    FileHelper::readBinaryChunk( labelsAsCharArray, labelsFilePath, fileStartPos, fileReadLength );
-    for( int i = 0; i < numExamples; i++ ) {
-        labels[i] = labelsAsUCharArray[i];
+    if( labels != 0 ) {
+        // now do labels...
+        string labelsFilePath = replace( imagesFilePath, "-images-idx3-ubyte", "-labels-idx1-ubyte" );
+        cout << "labelsfilepath: " << labelsFilePath << endl;
+        
+        fileStartPos = 2 * 4 + (long)startN;
+        fileReadLength = (long)numExamples;
+        char *labelsAsCharArray = new char[fileReadLength];
+        unsigned char *labelsAsUCharArray = reinterpret_cast< unsigned char *>(labelsAsCharArray );
+        cout << "labels path " << labelsFilePath << " startpos " << fileStartPos << " read length " << fileReadLength << endl;
+        FileHelper::readBinaryChunk( labelsAsCharArray, labelsFilePath, fileStartPos, fileReadLength );
+        for( int i = 0; i < numExamples; i++ ) {
+            labels[i] = labelsAsUCharArray[i];
+        }
+        delete[]labelsAsCharArray;
     }
-    delete[]labelsAsCharArray;
 }
 STATIC int **MnistLoader::loadImage( std::string dir, std::string set, int idx, int *p_size ) {
     long imagesFilesize = 0;
