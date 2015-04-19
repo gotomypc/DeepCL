@@ -1,0 +1,313 @@
+\hypertarget{classLayer}{\section{Layer Class Reference}
+\label{classLayer}\index{Layer@{Layer}}
+}
+
+
+A single layer within the neural net.  
+
+
+
+
+Inherited by Convolutional\-Layer, Force\-Backprop\-Layer, Fully\-Connected\-Layer, Input\-Layer, Loss\-Layer, Normalization\-Layer, Pooling\-Layer, Random\-Patches, and Random\-Translations.
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual publicapi int \hyperlink{classLayer_a8ad13f9abd9accb3577cec64172c3cfa}{get\-Persist\-Size} () const =0
+\begin{DoxyCompactList}\small\item\em Get the size of array needed for persisting to/from an array. \end{DoxyCompactList}\item 
+publicapi \hyperlink{classLayer_af8926e30054e50a5c7d1b29a8be05164}{Layer} (\hyperlink{classLayer}{Layer} $\ast$previous\-Layer, Layer\-Maker2 $\ast$maker)
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_ae4347df6631ca9af22de31d3d1c1273d}{set\-Training} (bool training)
+\begin{DoxyCompactList}\small\item\em Are we training or predicting? Only affects the Random translations and patches layers currently. \end{DoxyCompactList}\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_a9779cba6c042648fcce1c605e4bed3b8}{set\-Batch\-Size} (int batch\-Size)
+\begin{DoxyCompactList}\small\item\em used to set up internal buffers and stuff \end{DoxyCompactList}\item 
+publicapi V\-I\-R\-T\-U\-A\-L bool \hyperlink{classLayer_ab79827404ddcc0748363ee82f80f5500}{get\-Biased} () const 
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L bool \hyperlink{classLayer_a6266a51eb760e512987aa8370d5c8c55}{has\-Results\-Wrapper} () const 
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L C\-L\-Wrapper $\ast$ \hyperlink{classLayer_abe0fe88be13188358312b129deb688ac}{get\-Results\-Wrapper} ()
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L \\*
+Activation\-Function const $\ast$ \hyperlink{classLayer_a0ba9ca126aa2618018823555fb3c9737}{get\-Activation\-Function} ()
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L int \hyperlink{classLayer_a4d3aab33b1ab977927e7e7358981b572}{get\-Output\-Cube\-Size} () const 
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L int \hyperlink{classLayer_aca28b88a9ebe40c23fbc72f934980f65}{get\-Output\-Planes} () const 
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L int \hyperlink{classLayer_ad7ab6a2cb6c247a3f076189b6b66e855}{get\-Output\-Image\-Size} () const 
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_a2e03b77adb5127c11f45a3e5927748ad}{propagate} ()
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L bool \hyperlink{classLayer_a6b870d8f1928d7a054b133a80d5e50d1}{needs\-Back\-Prop} ()
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_a582c2a35976d9aaf050a8619c5a630da}{init\-Weights} (float const $\ast$weights)
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_acda45ef7133827f399ac682ff409c311}{init\-Bias\-Weights} (float const $\ast$bias\-Weights)
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_a74464720a6019ee22eb57c4f876fb812}{back\-Prop} (float learning\-Rate)
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L int \hyperlink{classLayer_a96234c95cad95b60c44ed0af11b712ba}{get\-Weights\-Size} () const 
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L int \hyperlink{classLayer_af45c20c2d438d7d17f779e573ba6f784}{get\-Bias\-Weights\-Size} () const 
+\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_a678e0229b3aee66579ba920f11d2c24e}{persist\-To\-Array} (float $\ast$array)
+\begin{DoxyCompactList}\small\item\em store the current weights and biases to array Note that you need to allocate array first \end{DoxyCompactList}\item 
+publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_ac4f7c0c62e9bab7c2075caf41a4ac027}{unpersist\-From\-Array} (float const $\ast$array)
+\begin{DoxyCompactList}\small\item\em initialize the current weights and biases from array \end{DoxyCompactList}\item 
+publicapi V\-I\-R\-T\-U\-A\-L std\-::string \hyperlink{classLayer_a9424b6215082c299267b6441cb6943f5}{as\-String} () const 
+\begin{DoxyCompactList}\small\item\em Get a string representation of the layer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A single layer within the neural net. 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLayer_af8926e30054e50a5c7d1b29a8be05164}{\index{Layer@{Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!Layer@{Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}publicapi Layer\-::\-Layer (
+\begin{DoxyParamCaption}
+\item[{{\bf Layer} $\ast$}]{previous\-Layer, }
+\item[{Layer\-Maker2 $\ast$}]{maker}
+\end{DoxyParamCaption}
+)}}\label{classLayer_af8926e30054e50a5c7d1b29a8be05164}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classLayer_a8ad13f9abd9accb3577cec64172c3cfa}{\index{Layer@{Layer}!get\-Persist\-Size@{get\-Persist\-Size}}
+\index{get\-Persist\-Size@{get\-Persist\-Size}!Layer@{Layer}}
+\subsubsection[{get\-Persist\-Size}]{\setlength{\rightskip}{0pt plus 5cm}virtual publicapi int Layer\-::get\-Persist\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classLayer_a8ad13f9abd9accb3577cec64172c3cfa}
+
+
+Get the size of array needed for persisting to/from an array. 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_ae4347df6631ca9af22de31d3d1c1273d}{\index{Layer@{Layer}!set\-Training@{set\-Training}}
+\index{set\-Training@{set\-Training}!Layer@{Layer}}
+\subsubsection[{set\-Training}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L void Layer\-::set\-Training (
+\begin{DoxyParamCaption}
+\item[{bool}]{training}
+\end{DoxyParamCaption}
+)}}\label{classLayer_ae4347df6631ca9af22de31d3d1c1273d}
+
+
+Are we training or predicting? Only affects the Random translations and patches layers currently. 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a9779cba6c042648fcce1c605e4bed3b8}{\index{Layer@{Layer}!set\-Batch\-Size@{set\-Batch\-Size}}
+\index{set\-Batch\-Size@{set\-Batch\-Size}!Layer@{Layer}}
+\subsubsection[{set\-Batch\-Size}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L void Layer\-::set\-Batch\-Size (
+\begin{DoxyParamCaption}
+\item[{int}]{batch\-Size}
+\end{DoxyParamCaption}
+)}}\label{classLayer_a9779cba6c042648fcce1c605e4bed3b8}
+
+
+used to set up internal buffers and stuff 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_ab79827404ddcc0748363ee82f80f5500}{\index{Layer@{Layer}!get\-Biased@{get\-Biased}}
+\index{get\-Biased@{get\-Biased}!Layer@{Layer}}
+\subsubsection[{get\-Biased}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L bool Layer\-::get\-Biased (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_ab79827404ddcc0748363ee82f80f5500}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a6266a51eb760e512987aa8370d5c8c55}{\index{Layer@{Layer}!has\-Results\-Wrapper@{has\-Results\-Wrapper}}
+\index{has\-Results\-Wrapper@{has\-Results\-Wrapper}!Layer@{Layer}}
+\subsubsection[{has\-Results\-Wrapper}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L bool Layer\-::has\-Results\-Wrapper (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_a6266a51eb760e512987aa8370d5c8c55}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_abe0fe88be13188358312b129deb688ac}{\index{Layer@{Layer}!get\-Results\-Wrapper@{get\-Results\-Wrapper}}
+\index{get\-Results\-Wrapper@{get\-Results\-Wrapper}!Layer@{Layer}}
+\subsubsection[{get\-Results\-Wrapper}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L C\-L\-Wrapper $\ast$ Layer\-::get\-Results\-Wrapper (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLayer_abe0fe88be13188358312b129deb688ac}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a0ba9ca126aa2618018823555fb3c9737}{\index{Layer@{Layer}!get\-Activation\-Function@{get\-Activation\-Function}}
+\index{get\-Activation\-Function@{get\-Activation\-Function}!Layer@{Layer}}
+\subsubsection[{get\-Activation\-Function}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L Activation\-Function const $\ast$ Layer\-::get\-Activation\-Function (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLayer_a0ba9ca126aa2618018823555fb3c9737}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a4d3aab33b1ab977927e7e7358981b572}{\index{Layer@{Layer}!get\-Output\-Cube\-Size@{get\-Output\-Cube\-Size}}
+\index{get\-Output\-Cube\-Size@{get\-Output\-Cube\-Size}!Layer@{Layer}}
+\subsubsection[{get\-Output\-Cube\-Size}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L int Layer\-::get\-Output\-Cube\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_a4d3aab33b1ab977927e7e7358981b572}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_aca28b88a9ebe40c23fbc72f934980f65}{\index{Layer@{Layer}!get\-Output\-Planes@{get\-Output\-Planes}}
+\index{get\-Output\-Planes@{get\-Output\-Planes}!Layer@{Layer}}
+\subsubsection[{get\-Output\-Planes}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L int Layer\-::get\-Output\-Planes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_aca28b88a9ebe40c23fbc72f934980f65}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_ad7ab6a2cb6c247a3f076189b6b66e855}{\index{Layer@{Layer}!get\-Output\-Image\-Size@{get\-Output\-Image\-Size}}
+\index{get\-Output\-Image\-Size@{get\-Output\-Image\-Size}!Layer@{Layer}}
+\subsubsection[{get\-Output\-Image\-Size}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L int Layer\-::get\-Output\-Image\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_ad7ab6a2cb6c247a3f076189b6b66e855}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a2e03b77adb5127c11f45a3e5927748ad}{\index{Layer@{Layer}!propagate@{propagate}}
+\index{propagate@{propagate}!Layer@{Layer}}
+\subsubsection[{propagate}]{\setlength{\rightskip}{0pt plus 5cm}V\-I\-R\-T\-U\-A\-L void Layer\-::propagate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLayer_a2e03b77adb5127c11f45a3e5927748ad}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a6b870d8f1928d7a054b133a80d5e50d1}{\index{Layer@{Layer}!needs\-Back\-Prop@{needs\-Back\-Prop}}
+\index{needs\-Back\-Prop@{needs\-Back\-Prop}!Layer@{Layer}}
+\subsubsection[{needs\-Back\-Prop}]{\setlength{\rightskip}{0pt plus 5cm}V\-I\-R\-T\-U\-A\-L bool Layer\-::needs\-Back\-Prop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLayer_a6b870d8f1928d7a054b133a80d5e50d1}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a582c2a35976d9aaf050a8619c5a630da}{\index{Layer@{Layer}!init\-Weights@{init\-Weights}}
+\index{init\-Weights@{init\-Weights}!Layer@{Layer}}
+\subsubsection[{init\-Weights}]{\setlength{\rightskip}{0pt plus 5cm}V\-I\-R\-T\-U\-A\-L void Layer\-::init\-Weights (
+\begin{DoxyParamCaption}
+\item[{float const $\ast$}]{weights}
+\end{DoxyParamCaption}
+)}}\label{classLayer_a582c2a35976d9aaf050a8619c5a630da}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_acda45ef7133827f399ac682ff409c311}{\index{Layer@{Layer}!init\-Bias\-Weights@{init\-Bias\-Weights}}
+\index{init\-Bias\-Weights@{init\-Bias\-Weights}!Layer@{Layer}}
+\subsubsection[{init\-Bias\-Weights}]{\setlength{\rightskip}{0pt plus 5cm}V\-I\-R\-T\-U\-A\-L void Layer\-::init\-Bias\-Weights (
+\begin{DoxyParamCaption}
+\item[{float const $\ast$}]{bias\-Weights}
+\end{DoxyParamCaption}
+)}}\label{classLayer_acda45ef7133827f399ac682ff409c311}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a74464720a6019ee22eb57c4f876fb812}{\index{Layer@{Layer}!back\-Prop@{back\-Prop}}
+\index{back\-Prop@{back\-Prop}!Layer@{Layer}}
+\subsubsection[{back\-Prop}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L void Layer\-::back\-Prop (
+\begin{DoxyParamCaption}
+\item[{float}]{learning\-Rate}
+\end{DoxyParamCaption}
+)}}\label{classLayer_a74464720a6019ee22eb57c4f876fb812}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a96234c95cad95b60c44ed0af11b712ba}{\index{Layer@{Layer}!get\-Weights\-Size@{get\-Weights\-Size}}
+\index{get\-Weights\-Size@{get\-Weights\-Size}!Layer@{Layer}}
+\subsubsection[{get\-Weights\-Size}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L int Layer\-::get\-Weights\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_a96234c95cad95b60c44ed0af11b712ba}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_af45c20c2d438d7d17f779e573ba6f784}{\index{Layer@{Layer}!get\-Bias\-Weights\-Size@{get\-Bias\-Weights\-Size}}
+\index{get\-Bias\-Weights\-Size@{get\-Bias\-Weights\-Size}!Layer@{Layer}}
+\subsubsection[{get\-Bias\-Weights\-Size}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L int Layer\-::get\-Bias\-Weights\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_af45c20c2d438d7d17f779e573ba6f784}
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a678e0229b3aee66579ba920f11d2c24e}{\index{Layer@{Layer}!persist\-To\-Array@{persist\-To\-Array}}
+\index{persist\-To\-Array@{persist\-To\-Array}!Layer@{Layer}}
+\subsubsection[{persist\-To\-Array}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L void Layer\-::persist\-To\-Array (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{array}
+\end{DoxyParamCaption}
+)}}\label{classLayer_a678e0229b3aee66579ba920f11d2c24e}
+
+
+store the current weights and biases to array Note that you need to allocate array first 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_ac4f7c0c62e9bab7c2075caf41a4ac027}{\index{Layer@{Layer}!unpersist\-From\-Array@{unpersist\-From\-Array}}
+\index{unpersist\-From\-Array@{unpersist\-From\-Array}!Layer@{Layer}}
+\subsubsection[{unpersist\-From\-Array}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L void Layer\-::unpersist\-From\-Array (
+\begin{DoxyParamCaption}
+\item[{float const $\ast$}]{array}
+\end{DoxyParamCaption}
+)}}\label{classLayer_ac4f7c0c62e9bab7c2075caf41a4ac027}
+
+
+initialize the current weights and biases from array 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a9424b6215082c299267b6441cb6943f5}{\index{Layer@{Layer}!as\-String@{as\-String}}
+\index{as\-String@{as\-String}!Layer@{Layer}}
+\subsubsection[{as\-String}]{\setlength{\rightskip}{0pt plus 5cm}publicapi V\-I\-R\-T\-U\-A\-L std\-::string Layer\-::as\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classLayer_a9424b6215082c299267b6441cb6943f5}
+
+
+Get a string representation of the layer. 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Layer.\-h\item 
+Layer.\-cpp\end{DoxyCompactItemize}
