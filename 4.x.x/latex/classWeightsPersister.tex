@@ -1,6 +1,11 @@
 \hypertarget{classWeightsPersister}{\section{Weights\-Persister Class Reference}
 \label{classWeightsPersister}\index{Weights\-Persister@{Weights\-Persister}}
 }
+
+
+Use to read/write weights from a \hyperlink{classNeuralNet}{Neural\-Net}.  
+
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -13,16 +18,14 @@ publicapi S\-T\-A\-T\-I\-C void \hyperlink{classWeightsPersister_a454a65b2a8ad6c
 
 
 \subsection{Detailed Description}
-whilst this class is portable, the weights files created totally are not (ie\-: endianness) but okish for now... (since it's not like weights files tend to be shared around much, and if they are, then the quickly-\/written file created by this could be converted by another utility into a portable datafile target usage for this class\-:
-\begin{DoxyItemize}
-\item quickly snapshotting the weights after each epoch, therefore should be\-:
-\begin{DoxyItemize}
-\item fast, low I\-O \-:-\/) \begin{DoxyParagraph}{Public A\-P\-I}
+Use to read/write weights from a \hyperlink{classNeuralNet}{Neural\-Net}. 
+
+whilst this class is portable, the weights files created totally are not (ie\-: endianness) but okish for now... (since it's not like weights files tend to be shared around much, and if they are, then the quickly-\/written file created by this could be converted by another utility into a portable datafile
+
+Target usage for this class is quickly snapshotting the weights after each epoch. Therefore should be\-: fast, low I\-O \-:-\/)\begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
 
-\end{DoxyItemize}
-\end{DoxyItemize}
 
 \subsection{Member Function Documentation}
 \hypertarget{classWeightsPersister_a5ec7638ead9249b696f60e39e47accd9}{\index{Weights\-Persister@{Weights\-Persister}!get\-Total\-Num\-Weights@{get\-Total\-Num\-Weights}}

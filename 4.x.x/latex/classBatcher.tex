@@ -3,6 +3,11 @@
 }
 
 
+Runs an epoch for a single set of already-\/loaded data.  
+
+
+
+
 Inherited by Learn\-Batcher, Net\-Action\-Batcher, and Propagate\-Batcher.
 
 \subsection*{Public Member Functions}
@@ -29,6 +34,8 @@ publicapi Epoch\-Result \hyperlink{classBatcher_a51d5f36d326bdc32926abd8aa5b0d22
 
 
 \subsection{Detailed Description}
+Runs an epoch for a single set of already-\/loaded data. 
+
 This class is responsible for running all batches once (ie one 'epoch'), but for a single set of already-\/loaded data If you want to have a class that loads the data in chunks, then you'll need \hyperlink{classOnDemandBatcher}{On\-Demand\-Batcher} Note however that, what \hyperlink{classOnDemandBatcher}{On\-Demand\-Batcher} does is, it loads in some data, and then it calls this \hyperlink{classBatcher}{Batcher} class. so they work together \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}

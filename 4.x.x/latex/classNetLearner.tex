@@ -3,6 +3,11 @@
 }
 
 
+Runs multiple learning epochs using \hyperlink{classBatcher}{Batcher} objects.  
+
+
+
+
 Inherits Net\-Learner\-Base.
 
 \subsection*{Public Member Functions}
@@ -39,7 +44,11 @@ publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classNetLearner_a189930d926a590e56
 
 
 \subsection{Detailed Description}
-handles learning the neural net, ie running multiple epochs, using two Batchers, one for training, one for testing, to learn the epochs \begin{DoxyParagraph}{Public A\-P\-I}
+Runs multiple learning epochs using \hyperlink{classBatcher}{Batcher} objects. 
+
+Handles learning the neural net, ie running multiple epochs. Uses two Batchers, one for training, one for testing, to learn the epochs.
+
+This class expects the data to be already in memory. If the data is really big, wont fit in memory, you probably want to use something more like \hyperlink{classNetLearnerOnDemand}{Net\-Learner\-On\-Demand}, which can load in a chunk of data from datafiles at a time \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
 

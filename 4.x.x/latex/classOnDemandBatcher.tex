@@ -1,6 +1,11 @@
 \hypertarget{classOnDemandBatcher}{\section{On\-Demand\-Batcher Class Reference}
 \label{classOnDemandBatcher}\index{On\-Demand\-Batcher@{On\-Demand\-Batcher}}
 }
+
+
+Learns an entire epoch of training, for data that wont fit in memory.  
+
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,7 +32,11 @@ publicapi Epoch\-Result \hyperlink{classOnDemandBatcher_ae03f6dff2a9313c318bb37b
 
 
 \subsection{Detailed Description}
-This handles an entire epoch of training, loading in data in chunks and then passing it to '\hyperlink{classBatcher}{Batcher}' class, to train/test each chunk If you want to run multiple epochs, you'll need a '\hyperlink{classNetLearner}{Net\-Learner}' class \begin{DoxyParagraph}{Public A\-P\-I}
+Learns an entire epoch of training, for data that wont fit in memory. 
+
+This handles an entire epoch of training, loading in data in chunks and then passing it to a '\hyperlink{classBatcher}{Batcher}' class, to train/test each chunk
+
+If you want to run multiple epochs, you can use a '\hyperlink{classNetLearnerOnDemand}{Net\-Learner\-On\-Demand}' class \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
 

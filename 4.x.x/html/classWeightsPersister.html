@@ -89,6 +89,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">WeightsPersister Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Use to read/write weights from a <a class="el" href="classNeuralNet.html" title="NeuralNet: main container class for network layers. ">NeuralNet</a>.  
+ <a href="classWeightsPersister.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -100,14 +103,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a454a65b2a8ad6c04f8b95533c3f9416c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>whilst this class is portable, the weights files created totally are not (ie: endianness) but okish for now... (since it's not like weights files tend to be shared around much, and if they are, then the quickly-written file created by this could be converted by another utility into a portable datafile target usage for this class:</p>
-<ul>
-<li>quickly snapshotting the weights after each epoch, therefore should be:<ul>
-<li>fast, low IO :-) <dl class="section user"><dt>Public API</dt><dd></dd></dl>
-</li>
-</ul>
-</li>
-</ul>
+<div class="textblock"><p>Use to read/write weights from a <a class="el" href="classNeuralNet.html" title="NeuralNet: main container class for network layers. ">NeuralNet</a>. </p>
+<p>whilst this class is portable, the weights files created totally are not (ie: endianness) but okish for now... (since it's not like weights files tend to be shared around much, and if they are, then the quickly-written file created by this could be converted by another utility into a portable datafile</p>
+<p>Target usage for this class is quickly snapshotting the weights after each epoch. Therefore should be: fast, low IO :-)</p>
+<dl class="section user"><dt>Public API</dt><dd></dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a5ec7638ead9249b696f60e39e47accd9"></a>
 <div class="memitem">
@@ -187,7 +186,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 19 2015 18:32:54 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 19 2015 20:33:14 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

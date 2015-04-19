@@ -90,6 +90,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p>Runs an epoch for a single set of already-loaded data.  
+ <a href="classBatcher.html#details">More...</a></p>
+
 <p>Inherited by LearnBatcher, NetActionBatcher, and PropagateBatcher.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -114,7 +117,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a51d5f36d326bdc32926abd8aa5b0d22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class is responsible for running all batches once (ie one 'epoch'), but for a single set of already-loaded data If you want to have a class that loads the data in chunks, then you'll need <a class="el" href="classOnDemandBatcher.html">OnDemandBatcher</a> Note however that, what <a class="el" href="classOnDemandBatcher.html">OnDemandBatcher</a> does is, it loads in some data, and then it calls this <a class="el" href="classBatcher.html">Batcher</a> class. so they work together </p>
+<div class="textblock"><p>Runs an epoch for a single set of already-loaded data. </p>
+<p>This class is responsible for running all batches once (ie one 'epoch'), but for a single set of already-loaded data If you want to have a class that loads the data in chunks, then you'll need <a class="el" href="classOnDemandBatcher.html" title="Learns an entire epoch of training, for data that wont fit in memory. ">OnDemandBatcher</a> Note however that, what <a class="el" href="classOnDemandBatcher.html" title="Learns an entire epoch of training, for data that wont fit in memory. ">OnDemandBatcher</a> does is, it loads in some data, and then it calls this <a class="el" href="classBatcher.html" title="Runs an epoch for a single set of already-loaded data. ">Batcher</a> class. so they work together </p>
 <dl class="section user"><dt>Public API</dt><dd></dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a4a53928e1ea4f752953ea43ab7faa0e8"></a>
@@ -330,7 +334,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 19 2015 18:32:54 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 19 2015 20:33:14 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

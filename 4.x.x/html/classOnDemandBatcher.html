@@ -89,6 +89,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">OnDemandBatcher Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Learns an entire epoch of training, for data that wont fit in memory.  
+ <a href="classOnDemandBatcher.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -114,7 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae03f6dff2a9313c318bb37bd1041edeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This handles an entire epoch of training, loading in data in chunks and then passing it to '<a class="el" href="classBatcher.html">Batcher</a>' class, to train/test each chunk If you want to run multiple epochs, you'll need a '<a class="el" href="classNetLearner.html">NetLearner</a>' class </p>
+<div class="textblock"><p>Learns an entire epoch of training, for data that wont fit in memory. </p>
+<p>This handles an entire epoch of training, loading in data in chunks and then passing it to a '<a class="el" href="classBatcher.html" title="Runs an epoch for a single set of already-loaded data. ">Batcher</a>' class, to train/test each chunk</p>
+<p>If you want to run multiple epochs, you can use a '<a class="el" href="classNetLearnerOnDemand.html" title="Learns multiple epochs, for data that wont fit in memory. ">NetLearnerOnDemand</a>' class </p>
 <dl class="section user"><dt>Public API</dt><dd></dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aafdf6b1cd51f52ba6f4664e6d7fafedc"></a>
@@ -320,7 +325,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 19 2015 18:32:54 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 19 2015 20:33:14 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
