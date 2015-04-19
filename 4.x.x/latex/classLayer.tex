@@ -17,6 +17,8 @@ virtual publicapi float $\ast$ \hyperlink{classLayer_ae9068e8ff8f6d8d50412aa8201
 \item 
 virtual publicapi int \hyperlink{classLayer_a8ad13f9abd9accb3577cec64172c3cfa}{get\-Persist\-Size} () const =0
 \begin{DoxyCompactList}\small\item\em Get the size of array needed for persisting to/from an array. \end{DoxyCompactList}\item 
+virtual publicapi int \hyperlink{classLayer_a4e3adf4750ce49ec64df0ed13425cde9}{get\-Results\-Size} () const =0
+\begin{DoxyCompactList}\small\item\em Get the size of the activated output from this layer. \end{DoxyCompactList}\item 
 publicapi \hyperlink{classLayer_af8926e30054e50a5c7d1b29a8be05164}{Layer} (\hyperlink{classLayer}{Layer} $\ast$previous\-Layer, Layer\-Maker2 $\ast$maker)
 \item 
 publicapi V\-I\-R\-T\-U\-A\-L void \hyperlink{classLayer_ae4347df6631ca9af22de31d3d1c1273d}{set\-Training} (bool training)
@@ -103,6 +105,20 @@ A single layer within the neural net.
 
 
 Get the size of array needed for persisting to/from an array. 
+
+\begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+\hypertarget{classLayer_a4e3adf4750ce49ec64df0ed13425cde9}{\index{Layer@{Layer}!get\-Results\-Size@{get\-Results\-Size}}
+\index{get\-Results\-Size@{get\-Results\-Size}!Layer@{Layer}}
+\subsubsection[{get\-Results\-Size}]{\setlength{\rightskip}{0pt plus 5cm}virtual publicapi int Layer\-::get\-Results\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classLayer_a4e3adf4750ce49ec64df0ed13425cde9}
+
+
+Get the size of the activated output from this layer. 
 
 \begin{DoxyParagraph}{Public A\-P\-I}
 

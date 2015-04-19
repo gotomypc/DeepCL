@@ -25,7 +25,7 @@ var searchData=
   ['getoutputplanes',['getOutputPlanes',['../classLayer.html#aca28b88a9ebe40c23fbc72f934980f65',1,'Layer::getOutputPlanes()'],['../classNeuralNet.html#ab32d1d2225a84dfeaee28fdf57d7eed6',1,'NeuralNet::getOutputPlanes()']]],
   ['getpersistsize',['getPersistSize',['../classLayer.html#a8ad13f9abd9accb3577cec64172c3cfa',1,'Layer']]],
   ['getresults',['getResults',['../classLayer.html#ae9068e8ff8f6d8d50412aa82014562a7',1,'Layer::getResults()'],['../classNeuralNet.html#a82c0bb751508ad07ec9ca57c98615828',1,'NeuralNet::getResults(int layer) const '],['../classNeuralNet.html#a8ddefd0ca34873853619632899364787',1,'NeuralNet::getResults() const ']]],
-  ['getresultssize',['getResultsSize',['../classNeuralNet.html#a76144f25f736ffe3d3e5923e102eb3e1',1,'NeuralNet']]],
+  ['getresultssize',['getResultsSize',['../classLayer.html#a4e3adf4750ce49ec64df0ed13425cde9',1,'Layer::getResultsSize()'],['../classNeuralNet.html#a76144f25f736ffe3d3e5923e102eb3e1',1,'NeuralNet::getResultsSize()']]],
   ['getresultswrapper',['getResultsWrapper',['../classLayer.html#abe0fe88be13188358312b129deb688ac',1,'Layer']]],
   ['gettotalnumweights',['getTotalNumWeights',['../classWeightsPersister.html#a5ec7638ead9249b696f60e39e47accd9',1,'WeightsPersister']]],
   ['getweightssize',['getWeightsSize',['../classLayer.html#a96234c95cad95b60c44ed0af11b712ba',1,'Layer']]]
