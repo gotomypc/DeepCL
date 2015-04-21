@@ -1,0 +1,11 @@
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=3 inputImageSize=128 numFilters=96 filterSize=11 outputImageSize=118 padZeros=0 biased=1 skip=0} LINEAR }, forward: 1979.45349216ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=3 inputImageSize=128 numFilters=96 filterSize=11 outputImageSize=118 padZeros=0 biased=1 skip=0} LINEAR }, backward: 6590.74971676ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=64 inputImageSize=64 numFilters=128 filterSize=9 outputImageSize=56 padZeros=0 biased=1 skip=0} LINEAR }, forward: 4468.90640259ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=64 inputImageSize=64 numFilters=128 filterSize=9 outputImageSize=56 padZeros=0 biased=1 skip=0} LINEAR }, backward: 19538.6034012ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=128 inputImageSize=32 numFilters=128 filterSize=9 outputImageSize=24 padZeros=0 biased=1 skip=0} LINEAR }, forward: 1447.01929092ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=128 inputImageSize=32 numFilters=128 filterSize=9 outputImageSize=24 padZeros=0 biased=1 skip=0} LINEAR }, backward: 2514.27898407ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=128 inputImageSize=16 numFilters=128 filterSize=7 outputImageSize=10 padZeros=0 biased=1 skip=0} LINEAR }, forward: 212.709188461ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=128 inputImageSize=16 numFilters=128 filterSize=7 outputImageSize=10 padZeros=0 biased=1 skip=0} LINEAR }, backward: 272.564506531ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=384 inputImageSize=13 numFilters=384 filterSize=3 outputImageSize=11 padZeros=0 biased=1 skip=0} LINEAR }, forward: 635.085391998ms
+ConvolutionalLayer{ LayerDimensions{ inputPlanes=384 inputImageSize=13 numFilters=384 filterSize=3 outputImageSize=11 padZeros=0 biased=1 skip=0} LINEAR }, backward: 1474.16718006m
+
