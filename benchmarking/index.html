@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>DeepCL: deep convolutional networks in OpenCL</title>
+<meta http-equiv="cache-control" content="no-cache" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="../jquery/jquery.min.js"></script>
+<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../angular/angular.min.js"></script>
+<style>
+.container {
+   padding: 30px;
+}
+</style>
+<script>
+//$( function() {
+//});
+var app = angular.module('mainapp', [] );
+app.controller( 'maincontroller', function( $scope, $http ) {
+    console.log('controller start');
+    $scope.benchmarks = []
+    $http.get('files.txt' ).success( function( benchmarks_text ) {
+        console.log('benchmarks_text: ' + benchmarks_text);
+        files = benchmarks_text.split('\n');
+        for( var i = 0; i < files.length; i++ ) {
+            if( files[i] == '' ) {
+                continue;
+            }
+            console.log('file: ' + files[i]);
+            benchmark = {};
+            benchmark.filename = files[i];
+            $scope.benchmarks[$scope.benchmarks.length] = benchmark;
+        }
+        console.log('benchmarks [' + JSON.stringify($scope.benchmarks) + ']');
+    }).error( function( error ) {
+        console.log('failed to get benchmarks file', error.status, error.data );
+        //alert('Server not available, or password was not recognized.');
+    });
+});
+</script>
+</head>
+<body ng-app="mainapp" ng-controller="maincontroller">
+<div class="container">
+    <br />
+    <div class="jumbotron">
+     <h1>DeepCL Benchmarking</h1>
+    </div>
+
+        <table class="table">
+        <tr><th>Version</th></tr>
+        <tr ng-repeat="benchmark in benchmarks" >
+        <td><a href="{{benchmark.filename}}">{{benchmark.filename}}</a></td>
+        </tr>
+        </table>
+
+</div>
+</body>
+</html>
+
