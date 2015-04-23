@@ -1,0 +1,2 @@
+mnist-c2, 8x14-16c5, ConvolutionalLayer{ LayerDimensions{ inputPlanes=8 inputImageSize=14 numFilters=16 filterSize=5 outputImageSize=10 padZeros=0 biased=1 skip=0} LINEAR }, forward=1.28200054169ms
+mnist-c2, 8x14-16c5, ConvolutionalLayer{ LayerDimensions{ inputPlanes=8 inputImageSize=14 numFilters=16 filterSize=5 outputImageSize=10 padZeros=0 biased=1 skip=0} LINEAR }, backward=1.82309150696ms
