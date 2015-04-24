@@ -24,6 +24,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
     $http.get('files.txt' ).success( function( benchmarks_text ) {
         console.log('benchmarks_text: ' + benchmarks_text);
         files = benchmarks_text.split('\n');
+        var benchmarks = [];
         for( var i = 0; i < files.length; i++ ) {
             if( files[i] == '' ) {
                 continue;
@@ -31,9 +32,11 @@ app.controller( 'maincontroller', function( $scope, $http ) {
             console.log('file: ' + files[i]);
             benchmark = {};
             benchmark.filename = files[i];
-            $scope.benchmarks[$scope.benchmarks.length] = benchmark;
+            benchmarks[$scope.benchmarks.length] = benchmark;
         }
-        console.log('benchmarks [' + JSON.stringify($scope.benchmarks) + ']');
+        benchmarks = benchmarks.reverse();
+        console.log('benchmarks ' + JSON.stringify(benchmarks));
+        $scope.benchmarks = benchmarks;
     }).error( function( error ) {
         console.log('failed to get benchmarks file', error.status, error.data );
         //alert('Server not available, or password was not recognized.');
