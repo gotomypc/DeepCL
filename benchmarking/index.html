@@ -35,7 +35,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
             split_filename = files[i].split('-');
             hash = '';
             if( split_filename.length >= 2 ) {
-                hash = split_filename.split('.')[0];
+                hash = split_filename[1].split('.')[0];
                 benchmark.hash = hash;
             }
             benchmarks[benchmarks.length] = benchmark;
