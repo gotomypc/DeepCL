@@ -54,6 +54,8 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                 return value;
             } }).success( function( benchmark_text ) {
             results = []
+            resultsByLabel = {};
+            resultsPivoted = [];
             split_text = benchmark_text.split('\n');
             parsed_results = false;
             for( var i = 0; i < split_text.length; i++ ) {
@@ -67,13 +69,34 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                     results_dict.results_line = line;
                     results[results.length] = results_dict;
                     parsed_results = true;
+                    var label = results_dict.label;
+                    var direction = results_dict.direction;
+                    var time_ms = results_dict.time_ms;
+                    if( direction == 'forward' ) {
+                        results_dict.forward = time_ms;
+                    } else {
+                        results_dict.backward = time_ms;
+                    }
+                    if( label in resultsByLabel ) {
+                        if( direction == 'forward' ) {
+                            resultsByLabel[label].forward = time_ms;
+                        } else {
+                            resultsByLabel[label].backward = time_ms;
+                        }
+                    } else {
+                        resultsByLabel[label] = results_dict;                        
+                        resultsPivoted[resultsPivoted.length] = results_dict;
+                    }
                 } else {
                     results[results.length] = { 'result_line': line };
                 }
             }
             if( parsed_results ) {
                 $scope.modalresultstitle = filename;
-                $scope.results = results;
+                for( var i = 0; i < resultsByLabel.length; i++ ) {
+                    results[i] = resultsByLabel
+                }
+                $scope.results = resultsPivoted;
                 $('#resultsmodal').modal('show');
             } else {
                 $scope.oldmodalresultstitle = filename;
@@ -114,12 +137,12 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                 </div>
                 <div class="modal-body" >
         <table class="table">
-        <tr><th>Label</th><th>Net String</th><th>Direction</th><th>Time (ms)</th></tr>
+        <tr><th>Label</th><th>Net String</th><th>Forward (ms)</th><th>Backward (ms)</th></tr>
         <tr ng-repeat="result in results">
         <td>{{result.label}}</a></td>
         <td>{{result.net_string}}</a></td>
-        <td>{{result.direction}}</a></td>
-        <td>{{result.time_ms}}</a></td>
+        <td>{{result.forward}}</a></td>
+        <td>{{result.backward}}</a></td>
         </tr>
         </table>
                 </div>
