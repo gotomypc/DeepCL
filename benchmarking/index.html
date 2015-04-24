@@ -32,6 +32,12 @@ app.controller( 'maincontroller', function( $scope, $http ) {
             console.log('file: ' + files[i]);
             benchmark = {};
             benchmark.filename = files[i];
+            split_filename = files[i].split('-');
+            hash = '';
+            if( len(split_filename) >= 2 ) {
+                hash = split_filename.split('.')[0];
+                benchmark.hash = hash;
+            }
             benchmarks[benchmarks.length] = benchmark;
         }
         benchmarks = benchmarks.reverse();
@@ -52,9 +58,10 @@ app.controller( 'maincontroller', function( $scope, $http ) {
     </div>
 
         <table class="table">
-        <tr><th>Version</th></tr>
+        <tr><th>Benchmark</th><th>Code</th></tr>
         <tr ng-repeat="benchmark in benchmarks" >
         <td><a href="{{benchmark.filename}}">{{benchmark.filename}}</a></td>
+        <td><a href="https://github.com/hughperkins/DeepCL/tree/{{benchmark.hash}}"</a>{{benchmark.hash}}</td>
         </tr>
         </table>
 
