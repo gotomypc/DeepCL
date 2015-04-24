@@ -34,7 +34,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
             benchmark.filename = files[i];
             split_filename = files[i].split('-');
             hash = '';
-            if( len(split_filename) >= 2 ) {
+            if( split_filename.length >= 2 ) {
                 hash = split_filename.split('.')[0];
                 benchmark.hash = hash;
             }
@@ -59,7 +59,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
 
         <table class="table">
         <tr><th>Benchmark</th><th>Code</th></tr>
-        <tr ng-repeat="benchmark in benchmarks" >
+        <tr ng-repeat="benchmark in benchmarks" 	>
         <td><a href="{{benchmark.filename}}">{{benchmark.filename}}</a></td>
         <td><a href="https://github.com/hughperkins/DeepCL/tree/{{benchmark.hash}}"</a>{{benchmark.hash}}</td>
         </tr>
