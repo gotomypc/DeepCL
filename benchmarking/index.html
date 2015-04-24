@@ -32,7 +32,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
             console.log('file: ' + files[i]);
             benchmark = {};
             benchmark.filename = files[i];
-            benchmarks[$scope.benchmarks.length] = benchmark;
+            benchmarks[benchmarks.length] = benchmark;
         }
         benchmarks = benchmarks.reverse();
         console.log('benchmarks ' + JSON.stringify(benchmarks));
