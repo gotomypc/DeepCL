@@ -47,6 +47,44 @@ app.controller( 'maincontroller', function( $scope, $http ) {
         console.log('failed to get benchmarks file', error.status, error.data );
         //alert('Server not available, or password was not recognized.');
     });
+    $scope.show_benchmark = function(filename) {
+        console.log('show_benchmark(' + filename +')');
+        $http.get(filename, {'responseType': 'text', 'transformResponse': function(value){
+                console.log('transform ' + value );
+                return value;
+            } }).success( function( benchmark_text ) {
+            results = []
+            split_text = benchmark_text.split('\n');
+            parsed_results = false;
+            for( var i = 0; i < split_text.length; i++ ) {
+                var line = split_text[i];
+                if( line.trim() == '' ) {
+                    continue;
+                }
+                console.log('result line [' + line + ']')
+                if( line.indexOf('"format": "v') >= 0 ) {
+                    results_dict = JSON.parse(line);
+                    results_dict.results_line = line;
+                    results[results.length] = results_dict;
+                    parsed_results = true;
+                } else {
+                    results[results.length] = { 'result_line': line };
+                }
+            }
+            if( parsed_results ) {
+                $scope.modalresultstitle = filename;
+                $scope.results = results;
+                $('#resultsmodal').modal('show');
+            } else {
+                $scope.oldmodalresultstitle = filename;
+                // $scope.oldresultscontents = benchmark_text; //.replace(/\n/g, '<br />');
+                $('#oldoutputdiv').html( benchmark_text.replace(/\n/g, '<br />\n') );
+                $('#oldresultsmodal').modal('show');
+            }
+        }).error( function(error ) {
+            console.log('failed to get benchmark file ' + filename, error.status, error.data );
+        });
+    };
 });
 </script>
 </head>
@@ -62,8 +100,54 @@ app.controller( 'maincontroller', function( $scope, $http ) {
         <tr ng-repeat="benchmark in benchmarks" 	>
         <td><a href="{{benchmark.filename}}">{{benchmark.filename}}</a></td>
         <td><a href="https://github.com/hughperkins/DeepCL/tree/{{benchmark.hash}}"</a>{{benchmark.hash}}</td>
+        <td><button class="btn btn-default" type="button" ng-click="show_benchmark(benchmark.filename)">Results</button></td>
         </tr>
         </table>
+
+    <div class="modal fade" id="resultsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Results for '{{modalresultstitle}}'</h4>
+                </div>
+                <div class="modal-body" >
+        <table class="table">
+        <tr><th>Label</th><th>Net String</th><th>Direction</th><th>Time (ms)</th></tr>
+        <tr ng-repeat="result in results">
+        <td>{{result.label}}</a></td>
+        <td>{{result.net_string}}</a></td>
+        <td>{{result.direction}}</a></td>
+        <td>{{result.time_ms}}</a></td>
+        </tr>
+        </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="oldresultsmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Results for '{{oldmodalresultstitle}}'</h4>
+                </div>
+                <div class="modal-body" id="oldoutputdiv" >
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
 
 </div>
 </body>
