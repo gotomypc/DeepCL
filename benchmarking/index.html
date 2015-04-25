@@ -120,7 +120,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
     </div>
 
         <table class="table">
-        <tr><th>Benchmark</th><th>Code</th></tr>
+        <tr><th>Benchmark</th><th>Code</th><th>Results</th></tr>
         <tr ng-repeat="benchmark in benchmarks" 	>
         <td><a href="{{benchmark.filename}}">{{benchmark.filename}}</a></td>
         <td><a href="https://github.com/hughperkins/DeepCL/tree/{{benchmark.hash}}"</a>{{benchmark.hash}}</td>
@@ -137,7 +137,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                     <h4 class="modal-title" id="myModalLabel">Results for '{{modalresultstitle}}'</h4>
                 </div>
                 <div class="modal-body" >
-These results were generated using the following commandline:
+These results were generated using the following commandline, using half a <a href="http://www.gpuzoo.com/GPU-NVIDIA/GRID_K520.html">K520</a>:
 <pre>{{cmd_line}}</pre>
         <table class="table">
         <tr><th>Label</th><th>Net String</th><th>Forward (ms)</th><th>Backward (ms)</th></tr>
