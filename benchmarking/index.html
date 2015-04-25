@@ -96,6 +96,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                 for( var i = 0; i < resultsByLabel.length; i++ ) {
                     results[i] = resultsByLabel
                 }
+                $scope.cmd_line = results[0].cmd_line.replace(/; /g, '\n');
                 $scope.results = resultsPivoted;
                 $('#resultsmodal').modal('show');
             } else {
@@ -136,6 +137,8 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                     <h4 class="modal-title" id="myModalLabel">Results for '{{modalresultstitle}}'</h4>
                 </div>
                 <div class="modal-body" >
+These results were generated using the following commandline:
+<pre>{{cmd_line}}</pre>
         <table class="table">
         <tr><th>Label</th><th>Net String</th><th>Forward (ms)</th><th>Backward (ms)</th></tr>
         <tr ng-repeat="result in results">
