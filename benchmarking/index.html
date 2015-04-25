@@ -102,7 +102,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                 for( var i = 0; i < resultsByLabel.length; i++ ) {
                     results[i] = resultsByLabel
                 }
-                $scope.cmd_line = results[0].cmd_line.replace(/; /g, '\n');
+                $scope.cmd_line = results[0].cmd_line.replace(/; /g, '\n').replace(' soumith1','');
                 $scope.results = resultsPivoted;
                 $('#resultsmodal').modal('show');
             } else {
