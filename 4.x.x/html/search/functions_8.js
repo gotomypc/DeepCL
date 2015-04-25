@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['needsbackprop',['needsBackProp',['../classLayer.html#a6b870d8f1928d7a054b133a80d5e50d1',1,'Layer']]],
   ['netlearner',['NetLearner',['../classNetLearner.html#ae1298aec18f9b90d5631e162e5b1a7bc',1,'NetLearner']]],
   ['netlearnerondemand',['NetLearnerOnDemand',['../classNetLearnerOnDemand.html#a251a1fde7994aad4d792ab4bfb5e2108',1,'NetLearnerOnDemand']]],
   ['neuralnet',['NeuralNet',['../classNeuralNet.html#a26e76270c8d49f4580909c07cb3595e8',1,'NeuralNet::NeuralNet()'],['../classNeuralNet.html#a4103bdf505370eb0e95a895844baa2c2',1,'NeuralNet::NeuralNet(int numPlanes, int imageSize)']]],

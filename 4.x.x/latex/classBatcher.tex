@@ -14,23 +14,23 @@ Inherited by Learn\-Batcher, Net\-Action\-Batcher, and Propagate\-Batcher.
 \begin{DoxyCompactItemize}
 \item 
 publicapi \hyperlink{classBatcher_a4a53928e1ea4f752953ea43ab7faa0e8}{Batcher} (Trainable $\ast$net, int batch\-Size, int N, float $\ast$data, int const $\ast$labels)
-\item 
+\begin{DoxyCompactList}\small\item\em constructor\-: pass in data to process, along with labels, network, ... \end{DoxyCompactList}\item 
 publicapi void \hyperlink{classBatcher_a0f3c13ade8b4840d87a43167a7341070}{reset} ()
-\item 
+\begin{DoxyCompactList}\small\item\em reset to the first batch, and set epoch\-Done to false \end{DoxyCompactList}\item 
 publicapi int \hyperlink{classBatcher_ab26dca3a4d002664f0a13c68ddc65ced}{get\-Next\-Batch} ()
-\item 
+\begin{DoxyCompactList}\small\item\em what is the index of the next batch to process? \end{DoxyCompactList}\item 
 virtual publicapi float \hyperlink{classBatcher_afaafa92c67a361127079ba8b3003e0f2}{get\-Loss} ()
-\item 
+\begin{DoxyCompactList}\small\item\em for training/testing, what is error loss so far? \end{DoxyCompactList}\item 
 virtual publicapi int \hyperlink{classBatcher_a5426a711b8a6989f57fa1c6dad2e1138}{get\-Num\-Right} ()
-\item 
+\begin{DoxyCompactList}\small\item\em for training/testing, how many right so far? \end{DoxyCompactList}\item 
 virtual publicapi int \hyperlink{classBatcher_ae1bcb776d55a399fc91ef70b43b753d5}{get\-N} ()
-\item 
+\begin{DoxyCompactList}\small\item\em how many examples in the entire set of currently loaded data? \end{DoxyCompactList}\item 
 virtual publicapi bool \hyperlink{classBatcher_a9f71c218e242b55bcd490379cc20e7ac}{get\-Epoch\-Done} ()
-\item 
+\begin{DoxyCompactList}\small\item\em has this epoch finished? \end{DoxyCompactList}\item 
 publicapi bool \hyperlink{classBatcher_afb1f812a7b9b3e45ae57d235c912d754}{tick} ()
-\item 
+\begin{DoxyCompactList}\small\item\em processes one single batch of data \end{DoxyCompactList}\item 
 publicapi Epoch\-Result \hyperlink{classBatcher_a51d5f36d326bdc32926abd8aa5b0d22e}{run} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em runs batch once, for currently loaded data \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -53,6 +53,10 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 \item[{int const $\ast$}]{labels}
 \end{DoxyParamCaption}
 )}}\label{classBatcher_a4a53928e1ea4f752953ea43ab7faa0e8}
+
+
+constructor\-: pass in data to process, along with labels, network, ... 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
@@ -66,6 +70,10 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )}}\label{classBatcher_a0f3c13ade8b4840d87a43167a7341070}
+
+
+reset to the first batch, and set epoch\-Done to false 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
@@ -76,6 +84,10 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )}}\label{classBatcher_ab26dca3a4d002664f0a13c68ddc65ced}
+
+
+what is the index of the next batch to process? 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
@@ -86,6 +98,10 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBatcher_afaafa92c67a361127079ba8b3003e0f2}
+
+
+for training/testing, what is error loss so far? 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
@@ -96,6 +112,10 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBatcher_a5426a711b8a6989f57fa1c6dad2e1138}
+
+
+for training/testing, how many right so far? 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
@@ -106,6 +126,10 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBatcher_ae1bcb776d55a399fc91ef70b43b753d5}
+
+
+how many examples in the entire set of currently loaded data? 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
@@ -116,6 +140,10 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classBatcher_a9f71c218e242b55bcd490379cc20e7ac}
+
+
+has this epoch finished? 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
@@ -126,7 +154,16 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )}}\label{classBatcher_afb1f812a7b9b3e45ae57d235c912d754}
+
+
+processes one single batch of data 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+could be learning for one batch, or prediction/testing for one batch
+
+if most recent epoch has finished, then resets, and starts a new set of learning \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
 \hypertarget{classBatcher_a51d5f36d326bdc32926abd8aa5b0d22e}{\index{Batcher@{Batcher}!run@{run}}
@@ -136,7 +173,14 @@ This class is responsible for running all batches once (ie one 'epoch'), but for
 {}
 \end{DoxyParamCaption}
 )}}\label{classBatcher_a51d5f36d326bdc32926abd8aa5b0d22e}
+
+
+runs batch once, for currently loaded data 
+
 \begin{DoxyParagraph}{Public A\-P\-I}
+
+\end{DoxyParagraph}
+could be one batch of learning, or one batch of forward propagation (for test/prediction), for example \begin{DoxyParagraph}{Public A\-P\-I}
 
 \end{DoxyParagraph}
 

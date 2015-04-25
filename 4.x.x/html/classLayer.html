@@ -128,14 +128,6 @@ ActivationFunction const *&#160;</td><td class="memItemRight" valign="bottom"><a
 <tr class="separator:aca28b88a9ebe40c23fbc72f934980f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7ab6a2cb6c247a3f076189b6b66e855"><td class="memItemLeft" align="right" valign="top">publicapi VIRTUAL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#ad7ab6a2cb6c247a3f076189b6b66e855">getOutputImageSize</a> () const </td></tr>
 <tr class="separator:ad7ab6a2cb6c247a3f076189b6b66e855"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e03b77adb5127c11f45a3e5927748ad"><td class="memItemLeft" align="right" valign="top">publicapi VIRTUAL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a2e03b77adb5127c11f45a3e5927748ad">propagate</a> ()</td></tr>
-<tr class="separator:a2e03b77adb5127c11f45a3e5927748ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b870d8f1928d7a054b133a80d5e50d1"><td class="memItemLeft" align="right" valign="top">publicapi VIRTUAL bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a6b870d8f1928d7a054b133a80d5e50d1">needsBackProp</a> ()</td></tr>
-<tr class="separator:a6b870d8f1928d7a054b133a80d5e50d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a582c2a35976d9aaf050a8619c5a630da"><td class="memItemLeft" align="right" valign="top">publicapi VIRTUAL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a582c2a35976d9aaf050a8619c5a630da">initWeights</a> (float const *weights)</td></tr>
-<tr class="separator:a582c2a35976d9aaf050a8619c5a630da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acda45ef7133827f399ac682ff409c311"><td class="memItemLeft" align="right" valign="top">publicapi VIRTUAL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#acda45ef7133827f399ac682ff409c311">initBiasWeights</a> (float const *biasWeights)</td></tr>
-<tr class="separator:acda45ef7133827f399ac682ff409c311"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74464720a6019ee22eb57c4f876fb812"><td class="memItemLeft" align="right" valign="top">publicapi VIRTUAL void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a74464720a6019ee22eb57c4f876fb812">backProp</a> (float learningRate)</td></tr>
 <tr class="separator:a74464720a6019ee22eb57c4f876fb812"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96234c95cad95b60c44ed0af11b712ba"><td class="memItemLeft" align="right" valign="top">publicapi VIRTUAL int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLayer.html#a96234c95cad95b60c44ed0af11b712ba">getWeightsSize</a> () const </td></tr>
@@ -410,72 +402,6 @@ ActivationFunction const *&#160;</td><td class="memItemRight" valign="bottom"><a
 
 </div>
 </div>
-<a class="anchor" id="a2e03b77adb5127c11f45a3e5927748ad"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">VIRTUAL void Layer::propagate </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section user"><dt>Public API</dt><dd></dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a6b870d8f1928d7a054b133a80d5e50d1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">VIRTUAL bool Layer::needsBackProp </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section user"><dt>Public API</dt><dd></dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a582c2a35976d9aaf050a8619c5a630da"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">VIRTUAL void Layer::initWeights </td>
-          <td>(</td>
-          <td class="paramtype">float const *&#160;</td>
-          <td class="paramname"><em>weights</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section user"><dt>Public API</dt><dd></dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="acda45ef7133827f399ac682ff409c311"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">VIRTUAL void Layer::initBiasWeights </td>
-          <td>(</td>
-          <td class="paramtype">float const *&#160;</td>
-          <td class="paramname"><em>biasWeights</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section user"><dt>Public API</dt><dd></dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a74464720a6019ee22eb57c4f876fb812"></a>
 <div class="memitem">
 <div class="memproto">
@@ -588,7 +514,7 @@ ActivationFunction const *&#160;</td><td class="memItemRight" valign="bottom"><a
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 19 2015 20:33:14 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 25 2015 15:00:51 for DeepCL by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
