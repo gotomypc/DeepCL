@@ -140,12 +140,13 @@ app.controller( 'maincontroller', function( $scope, $http ) {
 These results were generated using the following commandline, using half a <a href="http://www.gpuzoo.com/GPU-NVIDIA/GRID_K520.html">K520</a>:
 <pre>{{cmd_line}}</pre>
         <table class="table">
-        <tr><th>Label</th><th>Net String</th><th>Forward (ms)</th><th>Backward (ms)</th></tr>
+        <tr><th>Label</th><th>Type</th><th>Net String</th><th>Forward (ms)</th><th>Backward (ms)</th></tr>
         <tr ng-repeat="result in results">
-        <td>{{result.label}}</a></td>
-        <td>{{result.net_string}}</a></td>
-        <td>{{result.forward}}</a></td>
-        <td>{{result.backward}}</a></td>
+        <td>{{result.label}}</td>
+        <td>{{result.type}}</td>
+        <td>{{result.net_string}}</td>
+        <td>{{result.forward}}</td>
+        <td>{{result.backward}}</td>
         </tr>
         </table>
                 </div>
