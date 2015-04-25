@@ -145,6 +145,7 @@ app.controller( 'maincontroller', function( $scope, $http ) {
                 <div class="modal-body" >
 These results were generated using the following commandline, using half a <a href="http://www.gpuzoo.com/GPU-NVIDIA/GRID_K520.html">K520</a>:
 <pre>{{cmd_line}}</pre>
+        <p>Timings are each for a batch of 128 image cubes</p>
         <table class="table">
         <tr><th>Label</th><th>Type</th><th>Net String</th><th>Forward (ms)</th><th>Backward (ms)</th></tr>
         <tr ng-repeat="result in results">
